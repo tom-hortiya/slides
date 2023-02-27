@@ -1,0 +1,12 @@
+.DS_Store
+slides.pdf
+*.auxlock
+*.fdb_latexmk
+*.fls
+*.nav
+*.out
+*.snm
+*.toc
+*.synctex.gz
+*.log
+*.aux
