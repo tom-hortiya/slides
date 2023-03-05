@@ -16,6 +16,8 @@
 \setbeamercolor{block title}{bg=darkred}
 \setbeamercolor{section number projected}{bg=darkred}
 \setbeamercolor{caption name}{fg=darkred}
+\setbeamercolor{itemize item}{fg=darkred}
+\setbeamercolor{itemize subitem}{fg=darkred}
 
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
 
@@ -23,3 +25,31 @@
 \usepackage{graphicx}
 
 \usepackage[justification=centering]{caption}
+
+\usepackage{calc}
+
+\setbeamercovered{transparent}
+
+\newcommand{\troom}{\ensuremath{\hat{T}_{\mathrm{off}}}}
+\newcommand{\hroom}{\ensuremath{\hat{h}_{\mathrm{off}}}}
+\newcommand{\xa}{\ensuremath{\hat{x}_a}}
+
+\newcommand{\irr}{\ensuremath{I}}
+\newcommand{\irrnat}{\ensuremath{\hat{\irr}_{\mathrm{nat}}}}
+\newcommand{\irrart}{\ensuremath{\irr_{\mathrm{art}}}}
+\newcommand{\pho}{\ensuremath{A}}
+\newcommand{\pow}{\ensuremath{P}}
+
+\newcommand{\irrdelta}{\ensuremath{\irr_{\Delta}}}
+
+\newcommand{\maxirrart}{\ensuremath{\irrart^{\max}}}
+\newcommand{\maxpow}{\ensuremath{\pow^{\max}}}
+
+\newcommand{\accirr}{\ensuremath{\irr_{\Sigma}}}
+\newcommand{\accpho}{\ensuremath{\pho_{\Sigma}}}
+\newcommand{\accpow}{\ensuremath{\pow_{\Sigma}}}
+
+\newcommand{\optaccirr}{\ensuremath{\accirr^{\mathrm{opt}}}}
+\newcommand{\maxaccpho}{\ensuremath{\accpho^{\max}}}
+\newcommand{\minaccpho}{\ensuremath{\accpho^{\min}}}
+\newcommand{\maxaccpow}{\ensuremath{\accpow^{\max}}}

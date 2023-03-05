@@ -2,7 +2,98 @@
 
 \section{Control}
 
-\begin{frame}
-    \frametitle{Sample frame title}
-    This is some text in the first frame. This is some text in the first frame. This is some text in the first frame.
+\newcommand*{\WidestLeftHandSide}{\small$\accpho(j+1 \mid k)$}
+\newcommand*{\WidestRightHandSide}{\small$\mathcal{N}\left(\left[\irr(j \mid k), \, \troom(j \mid k), \, \hroom(j \mid k), \, \xa(j \mid k)\right]^T\right),$}
+
+\begin{frame}<1>[label=mpc1]
+    \frametitle{Model Predictive Control Problem I}
+    Solve the optimization problem
+    {\footnotesize
+        \begin{equation*}
+            \min_M \, \sum_{j=k}^{K-1} \left\vert \irr(j \mid k) - \irr(j-1 \mid k) \right\vert + V\left(\left[\accirr(K \mid k), \, \accpho(K \mid k), \, \accpow(K \mid k)\right]^T\right)
+        \end{equation*}
+    }
+
+    \onslide<6->{
+        subject to
+    }
+    {\small
+        \begin{align*}
+            \onslide<6->{
+                \makebox[\widthof{\WidestLeftHandSide}][r]{$\accirr(j+1 \mid k)$} &= \makebox[\widthof{\WidestRightHandSide}][l]{$\accirr(j \mid k) + \tau \cdot \frac{1}{\mathrm{C}_{\irr}} \cdot \irr(j \mid k),$} \\
+                \accpho(j+1 \mid k) &= \accpho(j \mid k) + \tau \cdot \frac{1}{\mathrm{C}_{\pho}} \cdot \pho(j \mid k), \\
+                \accpow(j+1 \mid k) &= \accpow(j \mid k) + \tau \cdot \frac{1}{\mathrm{C}_{\pow}} \cdot \pow(j \mid k), \\
+            }
+        \end{align*}
+    }
 \end{frame}
+
+\begin{frame}<2-4>
+    \frametitle{Terminal Cost Function}
+    The terminal cost function equals the weighted sum of
+    
+    \begin{align*}
+        &V_{\irr}\left(\accirr(K \mid k)\right) = 
+        \begin{cases}
+            \optaccirr - \accirr(K \mid k) & \text{if } \accirr(K \mid k) \leq \optaccirr \\
+            0 & \text{else}
+        \end{cases} \\[0.5cm]
+        \onslide<3->{
+            &V_{\pho}\left(\accpho(K \mid k)\right) = - \accpho(K \mid k)\\[0.5cm]
+        }
+        \onslide<4>{
+            &V_{\pow}\left(\accpow(K \mid k)\right) = \accpow(K \mid k)
+        }
+    \end{align*}
+
+\end{frame}
+
+\againframe<5-6>{mpc1}
+
+\begin{frame}<6-7>[label=mpc2]
+    \frametitle{Model Predictive Control Problem II}
+    {\small
+        \begin{align*}
+            \onslide<6->{
+                \makebox[\widthof{\WidestLeftHandSide}][r]{$\irr(j \mid k)$} &= \makebox[\widthof{\WidestRightHandSide}][l]{$\irrnat(j \mid k) + \irrart(j \mid k),$} \\
+            }
+            \onslide<7->{
+                \pho(j \mid k) &= \mathcal{N}\left(\left[\irr(j \mid k), \, \troom(j \mid k), \, \hroom(j \mid k), \, \xa(j \mid k)\right]^T\right), \\
+            }
+            \onslide<11->{
+                \pow(j \mid k) &= \frac{\maxpow}{\maxirrart} \cdot \irrart(j \mid k), \\
+            }
+            \onslide<12->{
+                \irrart(j \mid k) &\geq 0, \\
+                \irrart(j \mid k) &\leq \maxirrart, \\
+            }
+            \onslide<13->{\accpow(K \mid k) &\leq \maxaccpow}
+        \end{align*}
+    }
+
+    \onslide<14>{
+        for $j = k , \ldots , K-1$ as well as with $\accirr(k \mid k) = \accirr(k)$, $\accpho(k \mid k) = \accpho(k)$ and $\accpow(k \mid k) = \accpow(k)$.
+    }
+\end{frame}
+
+\begin{frame}<8>
+    \frametitle{Neural Network Formulation}
+    
+\end{frame}
+
+\begin{frame}<9>
+    \frametitle{Neural Network Formulation}
+    
+    A mixed-integer formulation is 
+    \begin{align*}
+        \hat{y}_m &\geq 0, \\
+        \hat{y}_m &\geq f_m(x), \\
+        \hat{y}_m &\leq f_m(x) - M_m^- \cdot (1-\delta), \\
+        \hat{y}_m &\leq M_m^+ \cdot \delta
+    \end{align*}
+        
+    where $\delta \in \{0, \, 1\}$ and bounds
+
+\end{frame}
+
+\againframe<10->{mpc2}
