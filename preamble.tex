@@ -28,6 +28,21 @@
 
 \usepackage{calc}
 
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+
+\tikzstyle{data} = [draw, circle, minimum height=1em, minimum width=1em]
+\tikzstyle{operation} = [draw, rectangle, minimum height=2em]
+
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [draw, rectangle, rounded corners, minimum width=4.5cm, minimum height=1.5cm,text centered]
+\tikzstyle{init} = [draw, trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=4.5cm, minimum height=1.5cm, text centered]
+\tikzstyle{process} = [draw, rectangle, minimum width=4.5cm, minimum height=1.5cm, text centered]
+\tikzstyle{decision} = [draw, diamond, aspect=2, minimum width=4.5cm, minimum height=1.5cm, text centered]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
 \setbeamercovered{transparent}
 
 \newcommand{\troom}{\ensuremath{\hat{T}_{\mathrm{off}}}}

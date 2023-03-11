@@ -77,22 +77,61 @@
 \end{frame}
 
 \begin{frame}<8>
-    \frametitle{Neural Network Formulation}
-    
+    \frametitle{Neural Network Formulation I}
+
+    A three-layer neural network can be represented by constructing mixed-integer programming formulations for its units.
+
+    \vspace{0.5cm}
+
+    \begin{figure}
+        \centering
+        \resizebox{8cm}{!}{
+            \begin{tikzpicture}[node distance=1em and 2em, >=latex, font=\footnotesize]
+                \node[data] (x1) {$x_1$};
+                \node[data, below=of x1] (x2) {$x_2$};
+                \node[circle, below=of x2] (dots) {\rotatebox{90}{$\cdots$}};
+                \node[data, below=of dots] (xn) {$x_n$};
+
+                \node (helper) at ($(x2)!0.5!(dots)$) {};
+
+                \node[operation, right=of helper, xshift=2em] (sum) {$\sum_{i=1}^n w_i \cdot x_i + b$};
+                \node[data, right=of sum] (y) {$y$};
+                \node[operation, right=of y] (max) {$\max\{0,y\}$};
+                \node[data, right=of max] (z) {$z$};
+
+                \node[above=of sum, yshift=1em] (b) {$b$};  
+
+                \draw [->] (x1) -- node[near start, above=0.25em] {$w_1$} ($(sum.west) + (0,0.2)$);
+                \draw [->] (x2) -- node[near start, above] {$w_2$} (sum.west);
+                \draw [->] (xn) -- node[near start, above=0.25em] {$w_n$} ($(sum.west) - (0,0.2)$);
+
+                \draw [->] (b) -- (sum);
+
+                \draw [->] (sum) -- (y);
+
+                \draw [->] (y) -- (max);
+
+                \draw [->] (max) -- (z);
+            \end{tikzpicture}
+        }
+        \caption{Rectified linear unit.}
+    \end{figure}
 \end{frame}
 
 \begin{frame}<9>
-    \frametitle{Neural Network Formulation}
+    \frametitle{Neural Network Formulation II}
     
-    A mixed-integer formulation is 
+    A mixed-integer programming formulation for a rectified linear unit can be constructed as 
+    {\small
     \begin{align*}
-        \hat{y}_m &\geq 0, \\
-        \hat{y}_m &\geq f_m(x), \\
-        \hat{y}_m &\leq f_m(x) - M_m^- \cdot (1-\delta), \\
-        \hat{y}_m &\leq M_m^+ \cdot \delta
+        z &\geq 0, \\
+        z &\geq \left(\sum_{i=1}^n w_i \cdot x_i + b\right), \\
+        z &\leq \left(\sum_{i=1}^n w_i \cdot x_i + b\right) - M^- \cdot (1-\delta), \\
+        z &\leq M^+ \cdot \delta
     \end{align*}
-        
-    where $\delta \in \{0, \, 1\}$ and bounds
+    }
+
+    where $\delta \in \{0, \, 1\}$ is a binary variable and $M^-, M^+ \in \mathbb{R}$ are constants.
 
 \end{frame}
 
