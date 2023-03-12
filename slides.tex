@@ -17,6 +17,35 @@
     \tableofcontents
 \end{frame}
 
+\begin{frame}
+    \frametitle{Outline}
+    
+    \begin{figure}
+        \centering
+        \resizebox{!}{5.5cm}{
+            \begin{tikzpicture}[node distance=1cm, font=\footnotesize]
+                \node (datacollection) [section] {Data\\Collection};
+                \node (plantphysiology) [section, right=of datacollection] {Plant\\Physiology};
+                \node (neuralnetwork) [section, right=of plantphysiology] {Neural\\Network};
+
+                \node (costfunction) [section, below=of datacollection, xshift=1.5cm, yshift=-0.5cm] {Cost\\Function};
+                \node (constraints) [section, right=of costfunction] {Constraints};
+
+                \node (identification) [chapter, label=above:Identification, fit=(datacollection) (plantphysiology) (neuralnetwork)] {};
+                \node (control) [chapter, label=above:Control, fit=(costfunction) (constraints)] {};
+                \node (casestudy) [chapter, below=of control] {Case Study};
+
+                \draw [arrow] (datacollection) -- (plantphysiology);
+                \draw [arrow] (plantphysiology) -- (neuralnetwork);
+
+                \draw [arrow] (identification.east) -| +(0.5,-1) -- +(-9.5,-1) |- (control.west);
+                \draw [arrow] (costfunction) -- (constraints);
+                \draw [arrow] (control.east) -| +(0.5,-1) -- +(-9.5,-1) |- (casestudy.west);
+            \end{tikzpicture}
+        }
+    \end{figure}
+\end{frame}
+
 \input{introduction}
 \input{identification}
 \input{control}

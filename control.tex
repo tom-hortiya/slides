@@ -121,15 +121,13 @@
 \begin{frame}<9>
     \frametitle{Neural Network Formulation II}
     
-    A mixed-integer programming formulation for a rectified linear unit can be constructed as 
-    {\small
+    A mixed-integer programming formulation for the rectifier activation function can be constructed as 
     \begin{align*}
         z &\geq 0, \\
-        z &\geq \left(\sum_{i=1}^n w_i \cdot x_i + b\right), \\
-        z &\leq \left(\sum_{i=1}^n w_i \cdot x_i + b\right) - M^- \cdot (1-\delta), \\
+        z &\geq y, \\
+        z &\leq y - M^- \cdot (1-\delta), \\
         z &\leq M^+ \cdot \delta
     \end{align*}
-    }
 
     where $\delta \in \{0, \, 1\}$ is a binary variable and $M^-, M^+ \in \mathbb{R}$ are constants.
 
