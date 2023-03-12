@@ -73,13 +73,35 @@
     }
 \end{frame}
 
-\begin{frame}
-    \frametitle{Model Predictive Control}
+\begin{frame}[label=overview]
+    \frametitle{Overview}
     
     \begin{figure}
         \centering
-        \includegraphics[scale=0.8]{figures/mpc1.pdf}
-        \caption{Example trajectories of model predictive control scheme.}
-    \end{figure}
+        \resizebox{!}{5.5cm}{
+            \begin{tikzpicture}[node distance=1cm, font=\footnotesize]
+                \node (datacollection) [section] {Data\\Collection};
+                \node (plantphysiology) [section, right=of datacollection] {Plant\\Physiology};
+                \node (neuralnetwork) [section, right=of plantphysiology] {Neural\\Network};
 
+                \node (costfunction) [section, below=of datacollection, xshift=1.5cm, yshift=-0.5cm] {Cost\\Function};
+                \node (constraints) [section, right=of costfunction] {Constraints};
+
+                \node (simulation) [section, below=of costfunction, yshift=-0.5cm] {Simulation};
+                \node (results) [section, right=of simulation] {Results};
+ 
+                \node (identification) [chapter, label=above:Identification, fit=(datacollection) (plantphysiology) (neuralnetwork)] {};
+                \node (control) [chapter, label=above:Control, fit=(costfunction) (constraints)] {};
+                \node (casestudy) [chapter, label=above:{Case Study}, fit=(simulation) (results)] {};
+
+                \draw [arrow] (datacollection) -- (plantphysiology);
+                \draw [arrow] (plantphysiology) -- (neuralnetwork);
+
+                \draw [arrow] (identification.east) -| +(0.5,-1) -- +(-9.5,-1) |- (control.west);
+                \draw [arrow] (costfunction) -- (constraints);
+                \draw [arrow] (control.east) -| +(0.5,-1) -- +(-9.5,-1) |- (casestudy.west);
+                \draw [arrow] (simulation) -- (results);
+            \end{tikzpicture}
+        }
+    \end{figure}
 \end{frame}
