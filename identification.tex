@@ -8,15 +8,15 @@
     \frametitle{Data Collection}
 
     \begin{columns}
-        \begin{column}{0.6\textwidth}
+        \begin{column}{0.5\textwidth}
             \only<1>{
                 \begin{figure}
                     \centering
-                    \includegraphics[scale=0.033]{figures/tent.jpg}
+                    \includegraphics[scale=0.03]{figures/tent.jpg}
                     \caption{Indoor agriculture facility.}
                 \end{figure}
             }
-            \only<2>{
+            \only<2->{
                 \begin{figure}
                     \centering
                     \includegraphics[scale=0.066]{figures/ceres.png}
@@ -24,34 +24,43 @@
                 \end{figure}
             }
         \end{column}
-        \begin{column}{0.4\textwidth}
+        \begin{column}{0.5\textwidth}
             \begin{itemize}
-                \item test 1 
-                \item test 2
+                \item<1-> Growing tent
+                \begin{itemize}
+                    \item<1-> Split into two compartements
+                    \item<1-> Two plants per compartement
+                \end{itemize}
+                \item<2-> Sensor system
+                \begin{itemize}
+                    \item<2-> Base unit
+                    \item<2-> Artificial leaf
+                \end{itemize}
             \end{itemize}
         \end{column}
     \end{columns}
+    \onslide<3>{
+        \begin{center}
+            Collection from 28th November to 6th December 2022
+        \end{center}
+    }
 \end{frame}
 
 \begin{frame}
     \frametitle{Plant Physiology}
-
+    \begin{center}
+        The rate of carbon dioxide assimilation during photosynthesis.
+    \end{center}
     \begin{columns}
         \begin{column}{0.4\textwidth}
             \begin{itemize}
-                \item test 1
-                \item test 2
+                \item<2-> Stomatal resistance model by Jones 
+                \item<3-> Photosynthesis model by Farquhar et al.
+                \item<4> Combined resistance-photosynthesis model
             \end{itemize}
         \end{column}
         \begin{column}{0.6\textwidth}
-            \begin{center}
-                \begin{minipage}{0.8\textwidth}
-                    \begin{block}{Energy Balance}
-                        \centering
-                        $M + S = R_n - C - \lambda \cdot E$
-                    \end{block}
-                \end{minipage}
-            \end{center}
+            \vspace{0.5cm}
             \begin{columns}
                 \begin{column}{0.3\textwidth}
                     \includegraphics[scale=0.33]{figures/photosynthesis.pdf}
