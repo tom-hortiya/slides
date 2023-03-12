@@ -26,16 +26,20 @@
         \end{column}
         \begin{column}{0.5\textwidth}
             \begin{itemize}
-                \item<1-> Growing tent
-                \begin{itemize}
-                    \item<1-> Split into two compartements
-                    \item<1-> Two plants per compartement
-                \end{itemize}
-                \item<2-> Sensor system
-                \begin{itemize}
-                    \item<2-> Base unit
-                    \item<2-> Artificial leaf
-                \end{itemize}
+                \onslide<1->{
+                    \item Growing tent
+                    \begin{itemize}
+                        \item Split into two compartements
+                        \item Two plants per compartement
+                    \end{itemize}
+                }
+                \onslide<2>{
+                    \item Sensor system
+                    \begin{itemize}
+                        \item Ceres base unit
+                        \item Artificial leaf
+                    \end{itemize}
+                }
             \end{itemize}
         \end{column}
     \end{columns}
@@ -98,15 +102,15 @@
     \frametitle{Neural Network I}
 
     \begin{columns}
-        \begin{column}{0.6\textwidth}
+        \begin{column}{0.55\textwidth}
             \only<1>{
                 \begin{figure}
                     \centering
-                    \includegraphics[scale=0.5]{figures/nn1.pdf}
-                    \caption{Example three-layer neural network.}
+                    \includegraphics[scale=0.45]{figures/nn1.pdf}
+                    \caption{Three-layer neural network.}
                 \end{figure}
             }
-            \only<2>{
+            \only<2->{
                 \begin{figure}
                     \centering
                     \includegraphics[scale=0.5]{figures/nn2.pdf}
@@ -114,10 +118,23 @@
                 \end{figure}
             }
         \end{column}
-        \begin{column}{0.4\textwidth}
+        \begin{column}{0.55\textwidth}
             \begin{itemize}
-                \item test 1
-                \item test 2
+                \onslide<1->{
+                    \item Three-Layer neural network
+                    \begin{itemize}
+                        \item Rectified linear hidden units
+                    \end{itemize}
+                }
+                \onslide<2->{
+                    \item Stochastic gradient descent
+                    \begin{itemize}
+                        \item Early stopping
+                    \end{itemize}
+                }
+                \onslide<3>{
+                    \item Implemented using Keras
+                }
             \end{itemize}
         \end{column}
     \end{columns}

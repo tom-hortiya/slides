@@ -8,24 +8,29 @@
     \frametitle{Simulation}
     
     \begin{itemize}
-        \item Model predictive control
-        \begin{itemize}
-            \item Formulated using Pyomo and OMLT
-            \item Solved using CBC 
-        \end{itemize}
-        \item Manual control
-        \begin{itemize}
-            \item 16 hours photoperiod starting at 4 o'clock
-            \item $12.9 \, \mathrm{mol} \, \mathrm{m}^{-2} \, \mathrm{d}^{-1}$ optimal accumulated irradiance
-            \item $3.8 \, \mathrm{mol} \, \mathrm{m}^{-2} \, \mathrm{d}^{-1}$ average accumulated natural irradiance 
-        \end{itemize}
-        \item Forecasts of the uncertain inputs
-        \begin{itemize}
-            \item Solar forecasts from external service
-            \item Persistence forecast of temperature and humidity
-            \item Seasonal persistence forecast of carbon dioxide concentration 
-        \end{itemize}
-        \item Simulation from the 10th to 15th Decemer 2022
+        \onslide<1->{
+            \item Model predictive control
+            \begin{itemize}
+                \item Formulated using Pyomo and OMLT
+                \item Solved using CBC 
+            \end{itemize}
+        }
+        \onslide<2->{
+            \item Manual control
+            \begin{itemize}
+                \item 16 hours photoperiod starting at 4 o'clock
+                \item $12.9 \, \mathrm{mol} \, \mathrm{m}^{-2} \, \mathrm{d}^{-1}$ optimal accumulated irradiance
+                \item $3.8 \, \mathrm{mol} \, \mathrm{m}^{-2} \, \mathrm{d}^{-1}$ average accumulated natural irradiance 
+            \end{itemize}
+        }
+        \onslide<3>{
+            \item Forecasts of the uncertain inputs
+            \begin{itemize}
+                \item Solar forecasts from external service
+                \item Persistence forecast of temperature and humidity
+                \item Seasonal persistence forecast of carbon dioxide concentration 
+            \end{itemize}
+        }
     \end{itemize}
 \end{frame}
 
