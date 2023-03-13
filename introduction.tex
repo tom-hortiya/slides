@@ -73,7 +73,7 @@
     }
 \end{frame}
 
-\begin{frame}[label=overview]
+\begin{frame}<1>[label=overview]
     \frametitle{Overview}
     
     \begin{figure}
@@ -90,9 +90,41 @@
                 \node (simulation) [section, below=of costfunction, yshift=-0.5cm] {Simulation};
                 \node (results) [section, right=of simulation] {Results};
  
-                \node (identification) [chapter, label=above:Identification, fit=(datacollection) (plantphysiology) (neuralnetwork)] {};
-                \node (control) [chapter, label=above:Control, fit=(costfunction) (constraints)] {};
-                \node (casestudy) [chapter, label=above:{Case Study}, fit=(simulation) (results)] {};
+                \node (identification) [chapter, fill=black!25!white, label=above:Identification, fit=(datacollection) (plantphysiology) (neuralnetwork)] {};
+                \node (control) [chapter, fill=black!25!white, label=above:Control, fit=(costfunction) (constraints)] {};
+                \node (casestudy) [chapter, fill=black!25!white, label=above:{Case Study}, fit=(simulation) (results)] {};
+
+                \node (datacollection) [section, fill=black!10!white] {Data\\Collection};
+                \node (plantphysiology) [section, fill=black!10!white, right=of datacollection] {Plant\\Physiology};
+                \node (neuralnetwork) [section, fill=black!10!white, right=of plantphysiology] {Neural\\Network};
+
+                \node (costfunction) [section, fill=black!10!white, below=of datacollection, xshift=1.5cm, yshift=-0.5cm] {Cost\\Function};
+                \node (constraints) [section, fill=black!10!white, right=of costfunction] {Constraints};
+
+                \node (simulation) [section, fill=black!10!white, below=of costfunction, yshift=-0.5cm] {Simulation};
+                \node (results) [section, fill=black!10!white, right=of simulation] {Results};
+
+                \only<2>{
+                    \node (identification) [chapter, fill=darkred!33!white, fit=(datacollection) (plantphysiology) (neuralnetwork)] {};
+
+                    \node (datacollection) [section, fill=darkred!10!white] {Data\\Collection};
+                    \node (plantphysiology) [section, fill=darkred!10!white, right=of datacollection] {Plant\\Physiology};
+                    \node (neuralnetwork) [section, fill=darkred!10!white, right=of plantphysiology] {Neural\\Network};
+                }
+
+                \only<3>{
+                    \node (control) [chapter, fill=darkred!33!white, label=above:Control, fit=(costfunction) (constraints)] {};
+
+                    \node (costfunction) [section, fill=darkred!10!white, below=of datacollection, xshift=1.5cm, yshift=-0.5cm] {Cost\\Function};
+                    \node (constraints) [section, fill=darkred!10!white, right=of costfunction] {Constraints};    
+                }
+
+                \only<4>{
+                    \node (casestudy) [chapter, fill=darkred!33!white, label=above:{Case Study}, fit=(simulation) (results)] {};
+
+                    \node (simulation) [section, fill=darkred!10!white, below=of costfunction, yshift=-0.5cm] {Simulation};
+                    \node (results) [section, fill=darkred!10!white, right=of simulation] {Results};
+                }
 
                 \draw [arrow] (datacollection) -- (plantphysiology);
                 \draw [arrow] (plantphysiology) -- (neuralnetwork);
