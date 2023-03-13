@@ -7,21 +7,21 @@
 \newcommand*{\WidestLeftHandSide}{\small$\accpho(j+1 \mid k)$}
 \newcommand*{\WidestRightHandSide}{\small$\mathcal{N}\left(\left[\irr(j \mid k), \, \troom(j \mid k), \, \hroom(j \mid k), \, \xa(j \mid k)\right]^T\right),$}
 
-\begin{frame}<1>[label=mpc1]
+\begin{frame}<1-3>[label=mpc1]
     \frametitle{Model Predictive Control Problem I}
     Solve the optimization problem
     {\footnotesize
         \begin{equation*}
-            \min_M \, \sum_{j=k}^{K-1} \left\vert \irr(j \mid k) - \irr(j-1 \mid k) \right\vert + V\left(\left[\accirr(K \mid k), \, \accpho(K \mid k), \, \accpow(K \mid k)\right]^T\right)
+            \min_M \, \alert<2>{\sum_{j=k}^{K-1} \left\vert \irr(j \mid k) - \irr(j-1 \mid k) \right\vert} + \alert<3>{V\left(\left[\accirr(K \mid k), \, \accpho(K \mid k), \, \accpow(K \mid k)\right]^T\right)}
         \end{equation*}
     }
 
-    \onslide<6->{
+    \onslide<8->{
         subject to
     }
     {\small
         \begin{align*}
-            \onslide<6->{
+            \onslide<8->{
                 \makebox[\widthof{\WidestLeftHandSide}][r]{$\accirr(j+1 \mid k)$} &= \makebox[\widthof{\WidestRightHandSide}][l]{$\accirr(j \mid k) + \tau \cdot \frac{1}{\mathrm{C}_{\irr}} \cdot \irr(j \mid k),$} \\
                 \accpho(j+1 \mid k) &= \accpho(j \mid k) + \tau \cdot \frac{1}{\mathrm{C}_{\pho}} \cdot \pho(j \mid k), \\
                 \accpow(j+1 \mid k) &= \accpow(j \mid k) + \tau \cdot \frac{1}{\mathrm{C}_{\pow}} \cdot \pow(j \mid k), \\
@@ -30,7 +30,7 @@
     }
 \end{frame}
 
-\begin{frame}<2-4>
+\begin{frame}<4-6>
     \frametitle{Terminal Cost Function}
     The terminal cost function equals the weighted sum of
     
@@ -40,45 +40,45 @@
             \optaccirr - \accirr(K \mid k) & \text{if } \accirr(K \mid k) \leq \optaccirr \\
             0 & \text{else}
         \end{cases} \\[0.5cm]
-        \onslide<3->{
+        \onslide<5->{
             &V_{\pho}\left(\accpho(K \mid k)\right) = - \accpho(K \mid k)\\[0.5cm]
         }
-        \onslide<4>{
+        \onslide<6>{
             &V_{\pow}\left(\accpow(K \mid k)\right) = \accpow(K \mid k)
         }
     \end{align*}
 
 \end{frame}
 
-\againframe<5-6>{mpc1}
+\againframe<7-8>{mpc1}
 
-\begin{frame}<6-7>[label=mpc2]
+\begin{frame}<8-9>[label=mpc2]
     \frametitle{Model Predictive Control Problem II}
     {\small
         \begin{align*}
-            \onslide<6->{
+            \onslide<8->{
                 \makebox[\widthof{\WidestLeftHandSide}][r]{$\irr(j \mid k)$} &= \makebox[\widthof{\WidestRightHandSide}][l]{$\irrnat(j \mid k) + \irrart(j \mid k),$} \\
             }
-            \onslide<7->{
+            \onslide<9->{
                 \pho(j \mid k) &= \mathcal{N}\left(\left[\irr(j \mid k), \, \troom(j \mid k), \, \hroom(j \mid k), \, \xa(j \mid k)\right]^T\right), \\
             }
-            \onslide<11->{
+            \onslide<13->{
                 \pow(j \mid k) &= \frac{\maxpow}{\maxirrart} \cdot \irrart(j \mid k), \\
             }
-            \onslide<12->{
+            \onslide<14->{
                 \irrart(j \mid k) &\geq 0, \\
                 \irrart(j \mid k) &\leq \maxirrart, \\
             }
-            \onslide<13->{\accpow(K \mid k) &\leq \maxaccpow}
+            \onslide<15->{\accpow(K \mid k) &\leq \maxaccpow}
         \end{align*}
     }
 
-    \onslide<14>{
+    \onslide<16>{
         for $j = k , \ldots , K-1$ as well as with $\accirr(k \mid k) = \accirr(k)$, $\accpho(k \mid k) = \accpho(k)$ and $\accpow(k \mid k) = \accpow(k)$.
     }
 \end{frame}
 
-\begin{frame}<8>
+\begin{frame}<10>
     \frametitle{Neural Network Formulation I}
 
     A three-layer neural network can be represented by constructing mixed-integer programming formulations for its units.
@@ -120,7 +120,7 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}<9>
+\begin{frame}<11>
     \frametitle{Neural Network Formulation II}
     
     A mixed-integer programming formulation for the rectifier activation function can be constructed as 
@@ -135,4 +135,4 @@
 
 \end{frame}
 
-\againframe<10->{mpc2}
+\againframe<12->{mpc2}
